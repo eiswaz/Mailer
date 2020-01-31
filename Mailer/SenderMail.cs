@@ -15,29 +15,21 @@ namespace Mailer
         //private int port = 25, PrrtSmtps = 465, PortTls = 587;
         public static void Sender (string Server ,string From, string To, string Subject, string Body, int PortSend/*, string Attach, string login*/, SecureString Password, bool Chk)
         {
+            using (var message = new MailMessage(From, To))
+            {
+                message.Subject = Subject;
+                message.Body = Body;
 
-            SmtpClient client = new SmtpClient(Server, PortSend);
-            client.Credentials = new NetworkCredential(From, Password);
-            if (Chk)
-            {
-                client.EnableSsl = true;
+                using (var client = new SmtpClient(Server, PortSend))
+                {
+                    client.EnableSsl = true;
+                    string name = From.Split('@')[0].ToString();
+                    client.Credentials = new NetworkCredential(name, Password);
+                    client.Send(message);
+                }
             }
-            MailMessage pismo = new MailMessage(From, To, Subject, Body);
-            /*if (!string.IsNullOrEmpty(Attach))
-            {
-                Attachment att = new Attachment(@Attach);
-                pismo.Attachments.Add(att);
-            }*/
-            try
-            {
-                
-                client.Send(pismo);
-                MessageBoxResult result = MessageBox.Show("Mail Send");
-            }
-            catch(Exception ex)
-            {
-                MessageBoxResult result = MessageBox.Show(ex.ToString());
-            }
+
+            
         }
     }
 }

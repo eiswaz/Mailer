@@ -24,7 +24,7 @@ namespace Mailer
     {
         private string login, sever;
         private SecureString pass;
-        private int PortSend = 587, PrrtSmtps = 465, PortTls = 587;
+        private int PortSend = 25, /*PrrtSmtps = 465,*/ PortTls = 587;
         private bool chk = false;
         private void EntryOn(object sender, RoutedEventArgs e)
         {
@@ -46,8 +46,8 @@ namespace Mailer
             sever = "smtp.yandex.ru";
             if (PortChange.IsChecked == true)
             {
-                //chk = true;
-                PortSend = PrrtSmtps;
+                chk = true;
+                PortSend = PortTls;
             }
             
             SenderMail.Sender(sever, login, ToUs.Text, SubUs.Text, BodyUs.Text, PortSend/*, FilePath.ToString(), login*/, pass, chk );
