@@ -52,6 +52,12 @@ namespace Mailer
             
             SenderMail.Sender(sever, login, ToUs.Text, SubUs.Text, BodyUs.Text, PortSend/*, FilePath.ToString(), login*/, pass, chk );
         }
+
+        private void CloseApp(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
         private void OpenFile(object sender, RoutedEventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
