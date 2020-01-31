@@ -46,7 +46,7 @@ namespace Mailer
             sever = "smtp.yandex.ru";
             if (PortChange.IsChecked == true)
             {
-                chk = true;
+                //chk = true;
                 PortSend = PrrtSmtps;
             }
             
