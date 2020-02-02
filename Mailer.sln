@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mailer", "Mailer\Mailer.csproj", "{0DBF7455-36E2-4B65-8F70-514F19C49AE6}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MailSender.lib", "MailSender.lib\MailSender.lib.csproj", "{5F9AA9A1-F647-47B5-BFC6-67F19A832352}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{0DBF7455-36E2-4B65-8F70-514F19C49AE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DBF7455-36E2-4B65-8F70-514F19C49AE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DBF7455-36E2-4B65-8F70-514F19C49AE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F9AA9A1-F647-47B5-BFC6-67F19A832352}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F9AA9A1-F647-47B5-BFC6-67F19A832352}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F9AA9A1-F647-47B5-BFC6-67F19A832352}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F9AA9A1-F647-47B5-BFC6-67F19A832352}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

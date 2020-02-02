@@ -7,32 +7,65 @@
         mc:Ignorable="d"
         Title="Mailer" Height="450" Width="800">
     <Grid>
-        <Grid x:Name="Ent" Visibility="Visible">
-            <Button x:Name="Enter" Content="Войти" HorizontalAlignment="Left" Margin="240,193,0,0" VerticalAlignment="Top" Width="124" Click="EntryOn"/>
-            <PasswordBox x:Name="PassUser" HorizontalAlignment="Left" Margin="240,168,0,0" VerticalAlignment="Top" Width="158" PasswordChar="#"/>
-            <TextBox x:Name="LoginUser" HorizontalAlignment="Left" Height="23" Margin="240,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
-            <Label Content="Логин" HorizontalAlignment="Left" Margin="184,137,0,0" VerticalAlignment="Top"/>
-            <Label Content="Пароль" HorizontalAlignment="Left" Margin="184,170,0,0" VerticalAlignment="Top"/>
+        <Grid x:Name="Ent" Visibility="Hidden">
+            <Button x:Name="Enter" Content="Войти" HorizontalAlignment="Left" Margin="330,211,0,0" VerticalAlignment="Top" Width="124" Click="EntryOn"/>
+            <PasswordBox x:Name="PassUser" HorizontalAlignment="Left" Margin="330,186,0,0" VerticalAlignment="Top" Width="158" PasswordChar="#"/>
+            <TextBox x:Name="LoginUser" HorizontalAlignment="Left" Height="23" Margin="330,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
+            <Label Content="Логин" HorizontalAlignment="Left" Margin="274,155,0,0" VerticalAlignment="Top"/>
+            <Label Content="Пароль" HorizontalAlignment="Left" Margin="274,188,0,0" VerticalAlignment="Top"/>
             <Button x:Name="CloseApplic" Content="Exit" HorizontalAlignment="Left" Margin="707,388,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="3.011,2.023" Click="CloseApp"/>
         </Grid>
-        <Grid x:Name="Sender" Visibility="Hidden">
-            <TextBox x:Name="FromUs" HorizontalAlignment="Left" Height="23" Margin="39,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="326" IsEnabled="False"/>
-            <Label Content="От" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-            <Label Content="Кому" HorizontalAlignment="Left" Margin="383,12,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.417,-2.593"/>
-            <TextBox x:Name="ToUs" HorizontalAlignment="Left" Height="23" Margin="426,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="356"/>
-            <TextBox x:Name="SubUs" HorizontalAlignment="Left" Height="23" Margin="52,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="730"/>
-            <Label Content="Тема" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="BodyUs" HorizontalAlignment="Left" Height="238" Margin="10,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="772" AcceptsReturn="True"/>
-            <Label Content="Прикрепить" HorizontalAlignment="Left" Margin="10,315,0,0" VerticalAlignment="Top"/>
-            <Button x:Name="AttacheFile" Content="Обзор" HorizontalAlignment="Left" Margin="707,319,0,0" VerticalAlignment="Top" Width="75" Click="OpenFile"/>
-            <TextBox x:Name="FilePath" HorizontalAlignment="Left" Height="23" Margin="92,317,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="610" IsEnabled="False"/>
-            <Button x:Name="ExitUs" Content="Exit" HorizontalAlignment="Left" Margin="707,388,0,0" VerticalAlignment="Top" Width="75" Click="ExitProg"/>
-            <Button x:Name="SendUs" Content="Отправить" HorizontalAlignment="Left" Margin="346,361,0,0" VerticalAlignment="Top" Width="75" Click="SendMail"/>
-            <CheckBox x:Name="PortChange" Content="Use SSL" HorizontalAlignment="Left" Margin="19,348,0,0" VerticalAlignment="Top"/>
+        <DockPanel x:Name="Sender" Visibility="Visible">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Файл">
+                    <MenuItem Header="Создать"/>
+                    <MenuItem Header="Открыть"/>
+                    <MenuItem Header="Закрыть"/>
+                    <MenuItem Header="Сохранить"/>
+                    <Separator/>
+                    <MenuItem Header="Выход"/>
+                </MenuItem>
+                <MenuItem Header="Сервис"></MenuItem>
+                <MenuItem Header="Помощь"></MenuItem>
+            </Menu>
+            <StatusBar DockPanel.Dock="Bottom">
+                <TextBlock Text="Test"/>
+            </StatusBar>
+            <TabControl>
+                <TabItem Header="Рассылка" ToolTip="Управление рассвлкой">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <ToolBarTray >
+                            <ToolBar Header="Отправители">
+                                <ComboBox Width="150" Name="SendersList"></ComboBox>
+                            </ToolBar>
+                        </ToolBarTray>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+            <Grid Visibility="Hidden">
+                <TextBox x:Name="FromUs" HorizontalAlignment="Left" Height="23" Margin="39,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="326" IsEnabled="False"/>
+                <Label Content="От" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                <Label Content="Кому" HorizontalAlignment="Left" Margin="383,12,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.417,-2.593"/>
+                <TextBox x:Name="ToUs" HorizontalAlignment="Left" Height="23" Margin="426,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="356"/>
+                <TextBox x:Name="SubUs" HorizontalAlignment="Left" Height="23" Margin="52,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="730"/>
+                <Label Content="Тема" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="BodyUs" HorizontalAlignment="Left" Height="200" Margin="10,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="772" AcceptsReturn="True"/>
+                <Label Content="Прикрепить" HorizontalAlignment="Left" Margin="10,273,0,0" VerticalAlignment="Top"/>
+                <Button x:Name="AttacheFile" Content="Обзор" HorizontalAlignment="Left" Margin="707,277,0,0" VerticalAlignment="Top" Width="75" Click="OpenFile"/>
+                <TextBox x:Name="FilePath" HorizontalAlignment="Left" Height="23" Margin="92,275,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="610" IsEnabled="False"/>
+                <Button x:Name="ExitUs" Content="Exit" HorizontalAlignment="Left" Margin="707,347,0,0" VerticalAlignment="Top" Width="75" Click="ExitProg"/>
+                <Button x:Name="SendUs" Content="Отправить" HorizontalAlignment="Left" Margin="346,304,0,0" VerticalAlignment="Top" Width="75" Click="SendMail"/>
+                <CheckBox x:Name="PortChange" Content="Use SSL" HorizontalAlignment="Left" Margin="10,304,0,0" VerticalAlignment="Top"/>
 
 
-        </Grid>
-        
+            </Grid>
+        </DockPanel>
+
+
     </Grid>
-    
+
 </Window>
